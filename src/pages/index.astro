@@ -2,17 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 ---
 <script>
-	var loadcontent;
-	document.querySelector('.trigger').addEventListener('click',(e)=>{
-		e.preventDefault();
-		if(typeof loadcontent == undefined || loadcontent == null){
-			console.log('dentro')
-			import('./../scripts/Loadcontent.js').then((x)=>{
-				console.log(x)
-				loadcontent = new x.default()
-			}).catch(()=>{ console.log('error') })
-		}
-	})
+	import Main from './../scripts/Main.js'
+	new Main()
 </script>
 <Layout title="Welcome to Astro.">
 	<main>
@@ -24,5 +15,4 @@ import Layout from '../layouts/Layout.astro';
 <style>
 	#loadContent,.trigger{color:white}
 </style>
-
 
