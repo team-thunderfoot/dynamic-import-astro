@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<script>
+	var loadcontent;
+	document.querySelector('.trigger').addEventListener('click',(e)=>{
+		e.preventDefault();
+		if(typeof loadcontent == undefined || loadcontent == null){
+			console.log('dentro')
+			import('./../scripts/Loadcontent.js').then((x)=>{
+				console.log(x)
+				loadcontent = new x.default()
+			}).catch(()=>{ console.log('error') })
+		}
+	})
+</script>
+<Layout title="Welcome to Astro.">
+	<main>
+		
+		<a href="#" class="trigger">click on this button</a>
+		<div id="loadContent"></div>
+	</main>
+</Layout>
+<style>
+	#loadContent,.trigger{color:white}
+</style>
+
+
